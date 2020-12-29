@@ -8,7 +8,7 @@ func NewRopeLeaf(s string) *RopeLeaf {
 	return &RopeLeaf{_sequence: s}
 }
 
-func (leaf *RopeLeaf) Depth() int {
+func (leaf *RopeLeaf) Depth() byte {
 	return 0
 }
 
@@ -24,8 +24,9 @@ func (leaf *RopeLeaf) String() string {
 	return leaf._sequence
 }
 
+
 func (leaf *RopeLeaf) Concat(r Rope) Rope {
-	if leaf2, isLeaf := r.(RopeLeaf); isLeaf && (leaf.Len() + leaf2.Len()) < MAX_LEAF_LENGTH {
+	if leaf2, isLeaf := r.(*RopeLeaf); isLeaf && (leaf.Len() + leaf2.Len()) < MAX_LEAF_LENGTH {
 		return NewRopeLeaf(leaf._sequence + leaf2._sequence )
 	}
 	//TO DO: Handle concat rope case
