@@ -18,6 +18,14 @@ func NewRopeConcat(left, right Rope) *RopeConcat {
 	}
 }
 
+func (rc *RopeConcat) rightChild() Rope {
+	return rc.right
+}
+
+func (rc *RopeConcat) leftChild() Rope {
+	return rc.left
+}
+
 func (rc *RopeConcat) Depth() byte {
 	return rc.depth
 }

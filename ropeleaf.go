@@ -29,7 +29,6 @@ func (leaf *RopeLeaf) Concat(r Rope) Rope {
 	if leaf2, isLeaf := r.(*RopeLeaf); isLeaf && (leaf.Len() + leaf2.Len()) < MAX_LEAF_LENGTH {
 		return NewRopeLeaf(leaf._sequence + leaf2._sequence )
 	}
-	//TO DO: Handle concat rope case
-	return nil
+	return NewRopeConcat(leaf, r)
 }
 
