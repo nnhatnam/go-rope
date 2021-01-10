@@ -8,7 +8,7 @@ func NewRopeLeaf(s string) *RopeLeaf {
 	return &RopeLeaf{_sequence: s}
 }
 
-func (leaf *RopeLeaf) Depth() byte {
+func (leaf *RopeLeaf) Depth() int {
 	return 0
 }
 

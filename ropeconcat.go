@@ -26,8 +26,8 @@ func (rc *RopeConcat) leftChild() Rope {
 	return rc.left
 }
 
-func (rc *RopeConcat) Depth() byte {
-	return rc.depth
+func (rc *RopeConcat) Depth() int {
+	return int(rc.depth)
 }
 
 func (rc *RopeConcat) Len() int {

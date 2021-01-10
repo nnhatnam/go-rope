@@ -7,26 +7,10 @@ import (
 )
 
 func TestRopeConcat(t *testing.T) {
-	s1 := "The quick brown fox jumped over"
-	leaf := NewRopeLeaf(s1)
-	assert.Equal(t, s1, leaf.String())
-	assert.Equal(t, len(s1), leaf.Len())
-	assert.Equal(t, leaf.Depth(), uint8(0))
-	assert.Equal(t, leaf.Index(5), s1[5])
-
-	leaf2 := leaf.Concat(leaf)
-	//leaf remains unchange
-	assert.Equal(t, s1, leaf.String())
-	assert.Equal(t, len(s1), leaf.Len())
-	assert.Equal(t, leaf.Depth(), uint8(0))
-	assert.Equal(t, leaf.Index(5), s1[5])
-
-	//leaf2
-	assert.Equal(t, s1 + s1, leaf2.String())
-	assert.Equal(t, len(s1 + s1), leaf2.Len())
-	assert.Equal(t, leaf2.Depth(), uint8(0))
-	assert.Equal(t, leaf2.Index(30), (s1 + s1)[30])
-
+	leaf1 := NewRopeLeaf("123456789")
+	concat := NewRopeConcat(leaf1, leaf1)
+	assert.Equal(t, concat.String(), "123456789123456789")
+	assert.Equal(t, concat.Len(), 18)
+	assert.Equal(t, concat.Depth(), 1)
+	assert.Equal(t, concat.Index(10), "123456789123456789"[10])
 }
-
-
